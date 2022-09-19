@@ -135,7 +135,7 @@ Deno.test('Injection', async (testContext) => {
 	}
 
 	await testContext.step('it registers all module controllers', () => {
-		const keys = app.router.keys();
+		const keys = app.router.keys() as unknown as IterableIterator<Route<string>>;
 		expectControllerRouterToExist(keys, '/second-controller');
 		expectControllerRouterToExist(keys, '/first-controller');
 	});
